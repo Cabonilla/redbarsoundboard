@@ -46,7 +46,7 @@ body {
     grid-area: Row1;
     background-color: transparent;
     /* border: 2.5vw solid black; */
-    color: #DDDDDD;
+    color: rgb(143, 143, 143);
     /* width: 50vw; */
     /* height: 25vw; */
     font-size: 11vw;
@@ -55,6 +55,10 @@ body {
     /* border-radius: 15vw; */
     border: none;
     width: 100%;
+}
+
+#explosion:hover {
+    color: rgba(221, 221, 221, 1);
 }
 
 .footer {
