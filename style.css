@@ -1,0 +1,82 @@
+@font-face {
+    font-family: Richland;
+    src: url(/assets/richland.otf);
+  }
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body {
+    background-color: #0e0e0e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+#logo {
+    width: 50vw;
+    height: auto;
+}
+
+#soundboard {
+    margin: 2vw;
+    width: 50vw;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 1vw;
+    grid-template-areas:
+        "Row1 Row1 Row1 Row1"
+        "Row2 Row2 Row3 Row3"
+        "Row4 Row4 Row5 Row5"
+        "Row6 Row7 Row8 Row9";
+}
+
+#explosion {
+    font-family: 'Richland';
+    grid-area: Row1;
+    background-color: transparent;
+    /* border: 2.5vw solid black; */
+    color: #DDDDDD;
+    /* width: 50vw; */
+    /* height: 25vw; */
+    font-size: 11vw;
+    cursor: pointer;
+    /* text-transform: uppercase; */
+    /* border-radius: 15vw; */
+    border: none;
+    width: 100%;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    margin: 1vw;
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
+}
+
+#fade, #stop {
+    font-family: 'Richland';
+    grid-area: Row1;
+    background-color: transparent;
+    color: #E63838;
+    /* width: 50vw; */
+    /* height: 25vw; */
+    font-size: 2.5vw;
+    cursor: pointer;
+    /* text-transform: uppercase; */
+    /* border-radius: 15vw; */
+    border: none;
+}

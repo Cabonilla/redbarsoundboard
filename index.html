@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Audio on Click</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+</head>
+
+<body>
+  <img src="/assets/soundboardio.svg" alt="" srcset="" id="logo">
+  <div id="soundboard">
+      <button class="button" id="explosion" data-sound="./assets/redbarexplosion.mp3">
+        <span>Explosion</span>
+      </button>
+  </div>
+  <div class="footer">
+    <button class="button" id="fade">
+      <span>Fade</span>
+    </button>
+    <button class="button" id="stop">
+      <span>Stop</span>
+    </button>
+  </div>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+<script>
+    const activeSounds = [];
+
+    document.querySelectorAll('.button[data-sound]').forEach(button => {
+      button.addEventListener('click', () => {
+        const soundUrl = button.getAttribute('data-sound');
+
+        // Create and play a new Howl instance
+        const sound = new Howl({
+          src: [soundUrl],
+          html5: true // Ensures compatibility with larger files
+        });
+
+        sound.play();
+        activeSounds.push(sound); // Keep track of active sounds
+      });
+    });
+
+    document.getElementById('stop').addEventListener('click', () => {
+      activeSounds.forEach(sound => sound.stop());
+      activeSounds.length = 0; // Clear the array
+    });
+
+    // Fade out all active sounds
+    document.getElementById('fade').addEventListener('click', () => {
+      activeSounds.forEach(sound => {
+        sound.fade(1, 0, 500); // Fade volume from 1 to 0 over 2 seconds
+        setTimeout(() => sound.stop(), 2000); // Stop after fading completes
+      });
+      activeSounds.length = 0; // Clear the array
+    });
+  </script>
+</html> 
