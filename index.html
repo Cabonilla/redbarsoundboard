@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Play Audio on Click</title>
+  <title>Redbar Soundboard</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
 </head>
@@ -12,67 +12,25 @@
 <body>
   <img src="./assets/soundboardio.svg" alt="" srcset="" id="logo">
   <div id="soundboard">
-    <button class="button" id="explosion" data-sound="./assets/redbarexplosion.mp3">
+    <button class="button" data-sound="./assets/redbarexplosion.mp3">
       <span>Explosion</span>
+    </button>
+    <button class="button" data-sound="./assets/jazz.mp3">
+      <span>Jazz</span>
     </button>
   </div>
   <div class="footer">
     <button class="button" id="fade">
       <span>Fade</span>
     </button>
+    <div id="visualizer-container"></div>
     <button class="button" id="stop">
       <span>Stop</span>
     </button>
   </div>
 
 </body>
+<script src="https://unpkg.com/wavesurfer.js@7"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-<script>
-  const activeSounds = [];
-  const preloadedSounds = {}; // Object to store preloaded Howl instances
-
-  // Preload sounds on page load
-  document.querySelectorAll('.button[data-sound]').forEach(button => {
-    const soundUrl = button.getAttribute('data-sound');
-
-    // Preload the sound
-    if (!preloadedSounds[soundUrl]) {
-      preloadedSounds[soundUrl] = new Howl({
-        src: [soundUrl],
-        html5: true, // Ensures compatibility with larger files
-        preload: true
-      });
-    }
-  });
-
-  // Play preloaded sounds on button click
-  document.querySelectorAll('.button[data-sound]').forEach(button => {
-    button.addEventListener('click', () => {
-      const soundUrl = button.getAttribute('data-sound');
-      const sound = preloadedSounds[soundUrl]; // Retrieve the preloaded Howl instance
-
-      if (sound) {
-        sound.volume(1); // Reset volume to full before playing
-        sound.play();
-        activeSounds.push(sound); // Keep track of active sounds
-      }
-    });
-  });
-
-  // Stop all active sounds
-  document.getElementById('stop').addEventListener('click', () => {
-    activeSounds.forEach(sound => sound.stop());
-    activeSounds.length = 0; // Clear the array
-  });
-
-  // Fade out all active sounds
-  document.getElementById('fade').addEventListener('click', () => {
-    activeSounds.forEach(sound => {
-      sound.fade(1, 0, 500); // Fade volume from 1 to 0 over 0.5 seconds
-      setTimeout(() => sound.stop(), 500); // Stop after fading completes
-    });
-    activeSounds.length = 0; // Clear the array
-  });
-</script>
-
+<script src="./script.js"></script>
 </html>
