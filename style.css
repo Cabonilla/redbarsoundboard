@@ -15,7 +15,7 @@ body {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 100vw;
+    height: 100vh;
     margin: 0;
 }
 
@@ -39,8 +39,8 @@ body {
         "Row4 Row4 Row5 Row5"
         "Row6 Row7 Row8 Row9"; */
     grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
-    /* grid-template-rows: repeat(3, 1fr); */
-    grid-template-rows: 1fr;
+    grid-auto-rows: 6vw;
+    align-items: center;
     gap: 2.5vw;
 }
 
