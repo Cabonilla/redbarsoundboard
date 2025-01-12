@@ -27,7 +27,7 @@ body {
 #soundboard {
     margin: 2vw;
     width: 50vw;
-    height: 100%;
+    /* height: 100%; */
     display: grid;
     /* justify-items: center; */
     /* grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -110,9 +110,9 @@ body {
   }
 
 .footer {
-    position: sticky;
+    position: fixed;
     bottom: 0;
-    right: 0;
+    /* right: 0; */
     /* margin: 1vw; */
     display: flex;
     justify-content: space-between;
